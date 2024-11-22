@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	{
+		text-align : center;
+		margin : 0 auto;
+	}
+</style>
+</head>
+<body>
+	<br><hr>
+	<h2>로그인폼</h2>
+	<hr><br>
+	<form action = "login.java" method = "post">
+	 <button id="runJava">Run Java File</button>
+
+    <script>
+        document.getElementById('runJava').addEventListener('click', function() {
+            fetch('/run-java', {
+                method: 'POST',
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert('Java file executed: ' + data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+	</form>
+</body>
+</html>
